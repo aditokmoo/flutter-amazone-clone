@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazone_clone/constants/global_variables.dart';
+import 'package:flutter_amazone_clone/features/account/screens/account_screen.dart';
 import 'package:flutter_amazone_clone/features/home/screens/home_screen.dart';
 
 class BottomNav extends StatefulWidget {
@@ -18,9 +19,7 @@ class _BottomNavState extends State<BottomNav> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    const Center(
-      child: Text('Account Page'),
-    ),
+    const AccountScreen(),
     const Center(
       child: Text('Cart Page'),
     ),
