@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazone_clone/common/widgets/bottom_nav.dart';
 import 'package:flutter_amazone_clone/constants/global_variables.dart';
 import 'package:flutter_amazone_clone/features/auth/screens/auth_screen.dart';
 import 'package:flutter_amazone_clone/features/auth/services/auth_service.dart';
-import 'package:flutter_amazone_clone/features/home/screens/home_screen.dart';
 import 'package:flutter_amazone_clone/providers/user_provider.dart';
 import 'package:flutter_amazone_clone/router.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const HomeScreen()
+          ? const BottomNav()
           : const AuthScreen(),
     );
   }

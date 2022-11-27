@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_amazone_clone/common/widgets/bottom_nav.dart';
 import 'package:flutter_amazone_clone/constants/error_handling.dart';
 import 'package:flutter_amazone_clone/constants/global_variables.dart';
 import 'package:flutter_amazone_clone/constants/utils.dart';
-import 'package:flutter_amazone_clone/features/home/screens/home_screen.dart';
 import 'package:flutter_amazone_clone/models/user.dart';
 import 'package:flutter_amazone_clone/providers/user_provider.dart';
 import 'package:http/http.dart' as http;
@@ -75,14 +75,13 @@ class AuthService {
       httpErrorHandle(
         response: res,
         context: context,
-        // ignore: duplicate_ignore
         onSuccess: () async {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
+            BottomNav.routeName,
             (route) => false,
           );
         },
@@ -112,7 +111,6 @@ class AuthService {
 
       var response = jsonDecode(tokenRes.body);
       if (response == true) {
-        // get user data
         http.Response userRes =
             await http.get(Uri.parse('$uri/'), headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
