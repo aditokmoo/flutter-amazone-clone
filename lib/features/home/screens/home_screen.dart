@@ -17,9 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: Center(
-        child: Text(
-          user.toJson(),
-        ),
+        child: Text('Welcome ${user.name} to home page'),
       ),
     );
   }
