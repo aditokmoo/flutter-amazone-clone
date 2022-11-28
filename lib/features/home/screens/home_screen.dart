@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazone_clone/constants/global_variables.dart';
 import 'package:flutter_amazone_clone/features/home/widgets/address_box.dart';
+import 'package:flutter_amazone_clone/features/home/widgets/top_categories.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -92,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: const [
           AddressBox(),
           SizedBox(height: 10),
+          TopCategories(),
         ],
       ),
     );
