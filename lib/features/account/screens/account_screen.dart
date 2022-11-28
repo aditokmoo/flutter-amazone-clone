@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_amazone_clone/constants/global_variables.dart';
 import 'package:flutter_amazone_clone/features/account/widgets/bellow_header_bar.dart';
 import 'package:flutter_amazone_clone/features/account/widgets/nav_buttons.dart';
+import 'package:flutter_amazone_clone/features/account/widgets/orders.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -53,6 +54,8 @@ class AccountScreen extends StatelessWidget {
           BellowHeaderBar(),
           SizedBox(height: 10),
           NavButtons(),
+          SizedBox(height: 20),
+          Orders(),
         ],
       ),
     );
