@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazone_clone/common/widgets/bottom_nav.dart';
 import 'package:flutter_amazone_clone/constants/global_variables.dart';
+import 'package:flutter_amazone_clone/features/admin/screens/admin_screen.dart';
 import 'package:flutter_amazone_clone/features/auth/screens/auth_screen.dart';
 import 'package:flutter_amazone_clone/features/auth/services/auth_service.dart';
+import 'package:flutter_amazone_clone/models/user.dart';
 import 'package:flutter_amazone_clone/providers/user_provider.dart';
 import 'package:flutter_amazone_clone/router.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +35,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Amazone clone',
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
@@ -48,8 +53,10 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? const BottomNav()
+      home: user.token.isNotEmpty
+          ? user.type == 'user'
+              ? const BottomNav()
+              : AdminScreen()
           : const AuthScreen(),
     );
   }
